@@ -11,4 +11,5 @@ before_install:
 script:
   - docker run --rm -v /opt/data:/var/lib/mysql -e MYSQL_ROOT_PASS=root_pw -e MYSQL_DB_NAME=db -e MYSQL_DB_USER=db_user -e MYSQL_DB_PASS=db_pass frezbo/mysql-server
   - docker run -d --name mysql -v /opt/data:/var/lib/mysql frezbo/mysql-server
+  - sleep 20
   - docker run --rm -it --link mysql:mysql frezbo/mysql-client /bin/sh -c 'mysql -h "$MYSQL_PORT_3306_TCP_ADDR" -u db_user -pdb_pass -e "SHOW DATABASES;"'
