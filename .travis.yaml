@@ -6,7 +6,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t frezbo/mysql-server .
+  - docker build -t frezbo/mysql-client .
 
 script:
   - docker run --rm -v /opt/data:/var/lib/mysql -e MYSQL_ROOT_PASS=root_pw -e MYSQL_DB_NAME=db -e MYSQL_DB_USER=db_user -e MYSQL_DB_PASS=db_pass frezbo/mysql-server
